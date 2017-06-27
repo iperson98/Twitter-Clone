@@ -28,15 +28,16 @@ public class SampleModel extends BaseModel {
 	Long id;
 
 	// Define table fields
-	@Column
-	private String name;
+	@Column	private String name;
+
+
 
 	public SampleModel() {
 		super();
 	}
 
 	// Parse model from JSON
-	public SampleModel(JSONObject object){
+	public SampleModel(JSONObject object) {
 		super();
 
 		try {
@@ -44,7 +45,8 @@ public class SampleModel extends BaseModel {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-	}
+
+    }
 
 	// Getters
 	public String getName() {

@@ -1,13 +1,13 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
 import com.codepath.oauth.OAuthLoginActionBarActivity;
-import com.codepath.oauth.OAuthLoginActivity;
 
-public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
+public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +27,9 @@ public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
 	// i.e Display application "homepage"
 	@Override
 	public void onLoginSuccess() {
-		// Intent i = new Intent(this, PhotosActivity.class);
-		// startActivity(i);
+		//Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+		Intent i = new Intent(this, TimelineActivity.class);
+		startActivity(i);
 	}
 
 	// OAuth authentication flow failed, handle the error
@@ -46,3 +47,6 @@ public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
 	}
 
 }
+// Consumer Key (API Key)	BqbHKYdFIeYeiTQ5GRhY9UHul
+// Consumer Secret (API Secret)	uhoZHgNHDd8XjzXV0T0is9dQMHNg91FDSlPvbx5L1Q1l1oWZkE
+// Resource URL: https://api.twitter.com/1.1/statuses/home_timeline.json
