@@ -46,6 +46,7 @@ public TweetAdapter(List<Tweet> tweets) {
         //populate the views according to this data
         holder.tvUserName.setText(tweet.user.name);
         holder.tvBody.setText(tweet.body);
+        holder.tvTime.setText(tweet.timeStamp);
 
 
         Glide.with(context).load(tweet.user.profileImageUrl).into(holder.ivProfileImage);
@@ -63,6 +64,8 @@ public TweetAdapter(List<Tweet> tweets) {
         public ImageView ivProfileImage;
         public TextView tvUserName;
         public TextView tvBody;
+        public TextView tvTime;
+
 
 
         public ViewHolder(View itemView) {
@@ -73,6 +76,8 @@ public TweetAdapter(List<Tweet> tweets) {
             ivProfileImage = (ImageView) itemView.findViewById(R.id.ivProfileImage);
             tvUserName = (TextView) itemView.findViewById(R.id.tvUserName);
             tvBody = (TextView) itemView.findViewById(R.id.tvBody);
+            tvTime = (TextView) itemView.findViewById(R.id.tvTime);
+
 
 
 

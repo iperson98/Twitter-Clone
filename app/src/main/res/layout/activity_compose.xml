@@ -23,5 +23,6 @@
         android:text="Tweet"
         android:id="@+id/button"
         android:layout_below="@+id/et_simple"
+        android:onClick="tweetButton"
         android:layout_alignParentEnd="true" />
 </RelativeLayout>

@@ -2,7 +2,9 @@ package com.codepath.apps.restclienttemplate.models;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
+@Parcel
 /**
  * Created by amade002 on 6/26/17.
  */
