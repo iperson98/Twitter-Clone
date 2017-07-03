@@ -15,7 +15,7 @@
         android:layout_marginBottom="10dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        app:srcCompat="@android:color/black" />
+        app:srcCompat="@color/black" />
 
     <TextView
         android:id="@+id/tvUserName"
@@ -24,7 +24,7 @@
         android:layout_toEndOf="@+id/ivProfileImage"
         android:paddingRight="5dp"
         android:text="UserName"
-        android:textColor="@android:color/black"
+        android:textColor="@color/black"
         android:layout_alignParentTop="true"
         android:textStyle="bold"
         android:layout_alignStart="@+id/tvBody" />
@@ -59,7 +59,7 @@
         android:layout_marginRight="10dp"
         android:paddingBottom="30dp"
         android:text="TextBody"
-        android:textColor="@android:color/black"
+        android:textColor="@color/black"
         android:layout_below="@+id/tvUserName"
         android:layout_toEndOf="@+id/ivProfileImage" />
 
@@ -77,7 +77,7 @@
         android:id="@+id/ibComment"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:backgroundTint="@android:color/white"
+        android:backgroundTint="@color/white"
         android:paddingBottom="5dp"
         app:srcCompat="@drawable/ic_vector_compose_dm"
         android:layout_below="@+id/ivImage"
@@ -90,7 +90,7 @@
         android:layout_above="@+id/ivLine"
         android:layout_marginLeft="20dp"
         android:layout_toEndOf="@+id/ibComment"
-        android:backgroundTint="@android:color/white"
+        android:backgroundTint="@color/white"
         android:paddingBottom="5dp"
         app:srcCompat="@drawable/ic_vector_retweet_stroke" />
 
@@ -99,7 +99,7 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginLeft="20dp"
-        android:backgroundTint="@android:color/white"
+        android:backgroundTint="@color/white"
         android:paddingBottom="5dp"
         app:srcCompat="@drawable/ic_vector_heart_stroke"
         android:layout_alignTop="@+id/ibMessage"
@@ -111,7 +111,7 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginLeft="20dp"
-        android:backgroundTint="@android:color/white"
+        android:backgroundTint="@color/white"
         android:paddingBottom="5dp"
         app:srcCompat="@drawable/ic_vector_messages_stroke"
         android:layout_above="@+id/ivLine"
