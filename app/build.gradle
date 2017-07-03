@@ -36,6 +36,7 @@ dependencies {
     // Glide for remote image loading
     // Android Async Http for sending async network requests
     // DBFlow for simple persistence with an ORM
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
 

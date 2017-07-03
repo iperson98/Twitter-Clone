@@ -28,16 +28,15 @@ public class SampleModel extends BaseModel {
 	Long id;
 
 	// Define table fields
-	@Column	private String name;
-
-
+	@Column
+	private String name;
 
 	public SampleModel() {
 		super();
 	}
 
 	// Parse model from JSON
-	public SampleModel(JSONObject object) {
+	public SampleModel(JSONObject object){
 		super();
 
 		try {
@@ -45,8 +44,7 @@ public class SampleModel extends BaseModel {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-
-    }
+	}
 
 	// Getters
 	public String getName() {
@@ -58,10 +56,10 @@ public class SampleModel extends BaseModel {
 		this.name = name;
 	}
 
-	/* The where class in this code below will be marked red until you first compile the project, since the code 
+	/* The where class in this code below will be marked red until you first compile the project, since the code
 	 * for the SampleModel_Table class is generated at compile-time.
 	 */
-	
+
 	// Record Finders
 	public static SampleModel byId(long id) {
 		return new Select().from(SampleModel.class).where(SampleModel_Table.id.eq(id)).querySingle();
