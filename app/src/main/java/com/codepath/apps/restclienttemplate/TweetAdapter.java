@@ -31,10 +31,18 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
     List<Tweet> mTweets;
     Context context;
+    private TweetAdapterListener mListener;
+
+    //define an interface required by the ViewHolder
+    public interface TweetAdapterListener {
+        public void onItemSelected(View view, int position);
+
+    }
 
     // pass in the Tweets array in the constructor
-    public TweetAdapter(List<Tweet> tweets) {
+    public TweetAdapter(List<Tweet> tweets, TweetAdapterListener listener) {
         mTweets = tweets;
+        mListener = listener;
     }
 
     // for each row, inflate the layout and cache references into ViewHolder
@@ -139,6 +147,20 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
             // set onClickListener
             itemView.setOnClickListener(this);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (mListener != null) {
+                        //get the position of row element
+                        int position = getAdapterPosition();
+                        //fire the listener callback
+                        mListener.onItemSelected(v, position);
+
+                    }
+                }
+            });
         }
 
         @Override

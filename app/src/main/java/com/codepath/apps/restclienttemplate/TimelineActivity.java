@@ -2,7 +2,9 @@ package com.codepath.apps.restclienttemplate;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,13 +12,15 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.fragments.TweetsListFragment;
+import com.codepath.apps.restclienttemplate.fragments.TweetsPagerAdapter;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import org.parceler.Parcels;
 
-public class TimelineActivity extends AppCompatActivity {
+public class TimelineActivity extends AppCompatActivity implements TweetsListFragment.TweetSelectedListener{
 
-    TweetsListFragment fragmentTweetsList;
+    //TweetsListFragment fragmentTweetsList;
+
     //public SwipeRefreshLayout swipeContainer;
     MenuItem miActionProgressItem;
     static final int REQUEST_CODE = 20;
@@ -24,6 +28,7 @@ public class TimelineActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.timelinemenu, menu);
+        //getMenuInflater().inflate(R.menu.menu_timeline, menu);
         return true;
     }
 
@@ -33,8 +38,19 @@ public class TimelineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
 
-        fragmentTweetsList = (TweetsListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_timeline);
+        //fragmentTweetsList = (TweetsListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_timeline);
+        //get the view pager
+        ViewPager vpPager = (ViewPager)
+                findViewById(R.id.viewpager);
+        //set the adapter for the pager
+        vpPager.setAdapter(new TweetsPagerAdapter(getSupportFragmentManager(), this));
+        //setup the Tablayout to use the view pager
+        TabLayout tablayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tablayout.setupWithViewPager(vpPager);
+
+
     }
+
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -77,9 +93,9 @@ public class TimelineActivity extends AppCompatActivity {
 
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             Tweet tweet = Parcels.unwrap(data.getParcelableExtra(Tweet.class.getName()));
-            fragmentTweetsList.tweets.add(0, tweet);
-            fragmentTweetsList.tweetAdapter.notifyItemInserted(0);
-            fragmentTweetsList.rvTweets.scrollToPosition(0);
+//            fragmentTweetsList.tweets.add(0, tweet);
+//            fragmentTweetsList.tweetAdapter.notifyItemInserted(0);
+//            fragmentTweetsList.rvTweets.scrollToPosition(0);
         }
     }
 
@@ -96,4 +112,15 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
 
+    public void onProfielView(MenuItem item) {
+        //lanuch the profile view
+        Intent i = new Intent(this, ProfileActivity.class);
+        startActivity(i);
+
+    }
+
+    @Override
+    public void onTweetSelcted(Tweet tweet) {
+        Toast.makeText(this, tweet.body, Toast.LENGTH_SHORT).show();
+    }
 }

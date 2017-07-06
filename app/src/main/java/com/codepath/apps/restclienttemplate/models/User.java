@@ -18,6 +18,9 @@ public class User {
     public String profileImageUrl;
     //public String createdAt;
 
+    public String tagLine;
+    public int followersCount;
+    public int followingCount;
 
     //deserialize the JSON
 
@@ -29,6 +32,11 @@ public class User {
         user.screenName = json.getString("screen_name");
         user.profileImageUrl = json.getString("profile_image_url");
         //user.createdAt = json.getString("created_at");
+
+        user.tagLine = json.getString("description");
+        user.followersCount = json.getInt("followers_count");
+        user.followingCount = json.getInt("friends_count");
+
         return user;
 
 
