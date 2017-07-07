@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
     tools:context="com.codepath.apps.restclienttemplate.TimelineActivity">
 
     <ImageView
@@ -15,7 +15,7 @@
         android:layout_marginBottom="10dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        app:srcCompat="@color/black" />
+        app:srcCompat="@android:color/black" />
 
     <TextView
         android:id="@+id/tvUserName"
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="TextTime"
+        android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:layout_alignBaseline="@+id/tvScreenName"
         android:layout_alignBottom="@+id/tvScreenName"
@@ -44,7 +44,7 @@
         android:id="@+id/tvScreenName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextScreenName"
+        android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:layout_marginLeft="5dp"
         android:layout_alignParentTop="true"
@@ -58,7 +58,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:paddingBottom="30dp"
-        android:text="TextBody"
+        android:text="TextView"
+        android:autoLink="all"
         android:textColor="@color/black"
         android:layout_below="@+id/tvUserName"
         android:layout_toEndOf="@+id/ivProfileImage" />
@@ -75,48 +76,48 @@
 
     <ImageButton
         android:id="@+id/ibComment"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:backgroundTint="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/tvComment"
+        android:background="@android:color/transparent"
         android:paddingBottom="5dp"
-        app:srcCompat="@drawable/ic_vector_compose_dm"
-        android:layout_below="@+id/ivImage"
-        android:layout_alignStart="@+id/ivImage" />
+        app:srcCompat="@drawable/ic_vector_compose_dm" />
 
     <ImageButton
         android:id="@+id/ibRetweet"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/ivLine"
-        android:layout_marginLeft="20dp"
-        android:layout_toEndOf="@+id/ibComment"
-        android:backgroundTint="@color/white"
+        android:layout_marginLeft="15dp"
+        android:layout_toEndOf="@+id/tvComment"
+        android:background="@android:color/transparent"
         android:paddingBottom="5dp"
         app:srcCompat="@drawable/ic_vector_retweet_stroke" />
 
     <ImageButton
         android:id="@+id/ibLike"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="20dp"
-        android:backgroundTint="@color/white"
-        android:paddingBottom="5dp"
-        app:srcCompat="@drawable/ic_vector_heart_stroke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ibMessage"
-        android:layout_toEndOf="@+id/ibRetweet"
-        android:layout_marginStart="24dp" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@+id/tvRetweet"
+        android:background="@android:color/transparent"
+        android:paddingBottom="5dp"
+        app:srcCompat="@drawable/ic_vector_heart_stroke" />
 
     <ImageButton
         android:id="@+id/ibMessage"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="20dp"
-        android:backgroundTint="@color/white"
-        android:paddingBottom="5dp"
-        app:srcCompat="@drawable/ic_vector_messages_stroke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/ivLine"
-        android:layout_toEndOf="@+id/ibLike"
-        android:layout_marginStart="21dp" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="21dp"
+        android:layout_toEndOf="@+id/tvLike"
+        android:background="@android:color/transparent"
+        android:paddingBottom="5dp"
+        app:srcCompat="@drawable/ic_vector_messages_stroke" />
 
     <ImageView
         android:id="@+id/ivImage"
@@ -126,5 +127,39 @@
         android:layout_alignStart="@+id/tvBody"
         android:layout_below="@+id/tvBody"
         app:srcCompat="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/tvComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivImage"
+        android:layout_marginLeft="3dp"
+        android:layout_toEndOf="@+id/ibComment"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvRetweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivImage"
+        android:layout_toEndOf="@+id/ibRetweet"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivImage"
+        android:layout_marginLeft="3dp"
+        android:layout_toEndOf="@+id/ibMessage"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivImage"
+        android:layout_toEndOf="@+id/ibLike"
+        android:text="TextView" />
 
 </RelativeLayout>

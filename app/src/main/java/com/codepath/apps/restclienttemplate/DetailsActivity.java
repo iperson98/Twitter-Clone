@@ -57,8 +57,6 @@ public class DetailsActivity extends AppCompatActivity {
         Glide.with(getApplicationContext())
                 .load(imageUrl)
                 .bitmapTransform(new RoundedCornersTransformation(getApplicationContext(), 25, 0))
-                //      .placeholder(placeholderId)
-                //      .error(placeholderId)
                 .into(ivProfileImage);
     }
 

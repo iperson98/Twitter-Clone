@@ -107,8 +107,10 @@ public class TimelineActivity extends AppCompatActivity implements TweetsListFra
     }
 
     private void showProfileView() {
-        Toast.makeText(this, "TODO: ProfileView", Toast.LENGTH_SHORT).show();
-
+        // create an intent for the new activity
+        Intent intent = new Intent(TimelineActivity.this, ProfileActivity.class);
+        // start activity
+        startActivity(intent);
     }
 
 
@@ -120,7 +122,7 @@ public class TimelineActivity extends AppCompatActivity implements TweetsListFra
     }
 
     @Override
-    public void onTweetSelcted(Tweet tweet) {
+    public void onTweetSelected(Tweet tweet) {
         Toast.makeText(this, tweet.body, Toast.LENGTH_SHORT).show();
     }
 }

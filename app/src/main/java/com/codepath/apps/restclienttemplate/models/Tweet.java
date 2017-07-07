@@ -19,6 +19,13 @@ public class Tweet {
     public String createdAt;
     public String time;
     public String imageUrl;
+    public boolean favorited;
+    public boolean retweeted;
+    public String favoriteCount;
+    public String retweetCount;
+    public String replyCount;
+    public String url;
+    public String displayUrl;
 
     // deserialize the JSON
     public static Tweet fromJSON(JSONObject jsonObject) throws JSONException {
@@ -31,6 +38,10 @@ public class Tweet {
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.user = User.fromJSON(jsonObject.getJSONObject("user"));
         tweet.time = TimeFormatter.getTimeDifference(tweet.createdAt);
+        tweet.favorited = jsonObject.getBoolean("favorited");
+        tweet.retweeted = jsonObject.getBoolean("retweeted");
+        tweet.favoriteCount = jsonObject.getString("favorite_count");
+        tweet.retweetCount = jsonObject.getString("retweet_count");
         //    tweet.time = TimeFormatter.getTimeStamp(tweet.createdAt);
         if (jsonObject.has("entities")) {
             JSONObject object = jsonObject.getJSONObject("entities");
@@ -42,6 +53,16 @@ public class Tweet {
                         tweet.imageUrl = object2.getString("media_url_https");
                     }
 
+                }
+            }
+            if (object.has("urls")) {
+                JSONArray urlArray = object.getJSONArray("urls");
+                if (urlArray.length() > 0) {
+                    JSONObject urlObject = urlArray.getJSONObject(0);
+                    if (urlObject.has("url") && urlObject.has("display_url")) {
+                        tweet.url = urlObject.getString("url");
+                        tweet.displayUrl = urlObject.getString("display_url");
+                    }
                 }
             }
 
