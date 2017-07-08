@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.codepath.apps.restclienttemplate.TwitterApp;
 import com.codepath.apps.restclienttemplate.TwitterClient;
+import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
@@ -42,15 +43,11 @@ public class HomeTimelineFragment extends TweetsListFragment {
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 //   Log.d("TwitterClient", response.toString());
 
-                // clear the adapter
+                // clear the items
                 tweetAdapter.clear();
 
+                // add new items
                 addItems(response);
-
-
-
-                // add the new tweets
-                //populateTimeLineHelper(response);
 
                 // refresh
                 swipeContainer.setRefreshing(false);
@@ -58,26 +55,16 @@ public class HomeTimelineFragment extends TweetsListFragment {
                 // once we finish the progress bar can go away
                 //hideProgressBar();
             }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                Log.d("TwitterClient", responseString);
-                throwable.printStackTrace();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                Log.d("TwitterClient", errorResponse.toString());
-                throwable.printStackTrace();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                Log.d("TwitterClient", errorResponse.toString());
-                throwable.printStackTrace();
-            }
         });
     }
-
+    public void appendTweet(Tweet tweet) {
+        // add a tweet
+        tweets.add(0, tweet);
+        // inserted at position 0
+        tweetAdapter.notifyItemInserted(0);
+        // do work
+        rvTweets.scrollToPosition(0);
     }
+
+}
 
