@@ -78,8 +78,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         int favorite = (tweet.favorited) ? ic_vector_heart : ic_vector_heart_stroke;
         int retweet = (tweet.retweeted) ? ic_vector_retweet : ic_vector_retweet_stroke;
 
-        final String favString = (tweet.favoriteCount.equals("0")) ? "" : tweet.favoriteCount;
-        final String retString = (tweet.retweetCount.equals("0")) ? "" : tweet.retweetCount;
+        final String favString = (tweet.favorites.equals("0")) ? "" : tweet.favorites;
+        final String retString = (tweet.retweets.equals("0")) ? "" : tweet.retweets;
 
         // populate the views according to position
         holder.tvUsername.setText(tweet.user.name);
@@ -105,12 +105,12 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
                             // set the new image
                             holder.ibLike.setImageResource(ic_vector_heart_stroke);
                             // set the new favorites count
-                            tweet.favoriteCount = Integer.toString(Integer.parseInt(tweet.favoriteCount) - 1);
+                            tweet.favorites = Integer.toString(Integer.parseInt(tweet.favorites) - 1);
                             // set the new text
-                            if (tweet.favoriteCount.equals("0"))
+                            if (tweet.favorites.equals("0"))
                                 holder.tvLike.setText(favString);
                             else
-                                holder.tvLike.setText(tweet.favoriteCount);
+                                holder.tvLike.setText(tweet.favorites);
                         }
 
                         @Override
@@ -146,9 +146,9 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
                             // set the new image
                             holder.ibLike.setImageResource(ic_vector_heart);
                             // set the new favorites count
-                            tweet.favoriteCount = Integer.toString(Integer.parseInt(tweet.favoriteCount) + 1);
+                            tweet.favorites = Integer.toString(Integer.parseInt(tweet.favorites) + 1);
                             // set the new text
-                            holder.tvLike.setText(tweet.favoriteCount);
+                            holder.tvLike.setText(tweet.favorites);
                         }
 
                         @Override
